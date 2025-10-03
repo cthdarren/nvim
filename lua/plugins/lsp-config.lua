@@ -13,7 +13,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"ts_ls",
+					"vtsls",
 					"html",
 					"tailwindcss",
 					"cssls",
@@ -30,39 +30,44 @@ return {
 		lazy = false,
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lspconfig = require("lspconfig")
+			local lspconfig = vim.lsp
 			local util = require("lspconfig.util")
 
-			lspconfig.lua_ls.setup({
+			lspconfig.config('lua_ls', {
 				capabitlies = capabilities,
 			})
-			lspconfig.ts_ls.setup({
-				capabilities = capabilities,
+			lspconfig.config('html', {
+				capabitlies = capabilities,
 			})
-			lspconfig.html.setup({
-				capabilities = capabilities,
+			lspconfig.config('tailwindcss', {
+				capabitlies = capabilities,
 			})
-			lspconfig.tailwindcss.setup({
-				capabilities = capabilities,
+			lspconfig.config('cssls', {
+				capabitlies = capabilities,
 			})
-			lspconfig.cssls.setup({
-				capabilities = capabilities,
+			lspconfig.config('jdtls', {
+				capabitlies = capabilities,
 			})
-			lspconfig.jdtls.setup({
-				capabilities = capabilities,
+			lspconfig.config('pyright', {
+				capabitlies = capabilities,
 			})
-			lspconfig.pyright.setup({
-				capabilities = capabilities,
+			lspconfig.config('clangd', {
+				capabitlies = capabilities,
 			})
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
-			})
-			lspconfig.eslint.setup({
+			lspconfig.config('eslint', {
                 settings={
                     packageManager = 'npm'
                 },
 				capabilities = capabilities,
 			})
+            lspconfig.enable('lua_ls')
+            lspconfig.enable('html')
+            lspconfig.enable('tailwindcss')
+            lspconfig.enable('cssls')
+            lspconfig.enable('jdtls')
+            lspconfig.enable('pyright')
+            lspconfig.enable('clangd')
+            lspconfig.enable('eslint')
 
 			vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<C-,>", vim.lsp.buf.code_action, {})

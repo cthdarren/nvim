@@ -20,7 +20,6 @@ return {
 					"jdtls",
 					"pyright",
 					"clangd",
-                    "eslint"
 				},
 			})
 		end,
@@ -54,12 +53,6 @@ return {
 			lspconfig.config('clangd', {
 				capabitlies = capabilities,
 			})
-			lspconfig.config('eslint', {
-                settings={
-                    packageManager = 'npm'
-                },
-				capabilities = capabilities,
-			})
             lspconfig.enable('lua_ls')
             lspconfig.enable('html')
             lspconfig.enable('tailwindcss')
@@ -67,7 +60,6 @@ return {
             lspconfig.enable('jdtls')
             lspconfig.enable('pyright')
             lspconfig.enable('clangd')
-            lspconfig.enable('eslint')
 
 			vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<C-,>", vim.lsp.buf.code_action, {})

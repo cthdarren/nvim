@@ -6,8 +6,6 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
-		local api = require("nvim-tree.api")
-		vim.keymap.set("n", "<C-b>", api.tree.toggle, {})
 		require("nvim-tree").setup({
 			actions = {
 				open_file = {
@@ -18,5 +16,8 @@ return {
 				enable = true,
 			},
 		})
+
+		local api = require("nvim-tree.api")
+		vim.keymap.set("n", "<C-b>", api.tree.toggle, {})
 	end,
 }

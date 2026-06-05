@@ -1,15 +1,36 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=4")
-vim.cmd("set softtabstop=4")
-vim.cmd("set shiftwidth=4")
-vim.cmd("set relativenumber")
-vim.cmd("set number")
-vim.cmd("set nuw=1")
-vim.cmd("execute 'hi LineNr ctermfg=lightcyan guifg=#aa0000'")
--- vim.cmd("highlight LineNrBelow ctermbg=black guifg=black")
--- vim.cmd("highlight LineNrAbove ctermbg=black guifg=black")
-vim.cmd("highlight NormalNC ctermbg=black guibg=black")
-vim.cmd("highlight Normal ctermbg=black guibg=black")
 vim.g.mapleader = " "
+
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.relativenumber = true
+vim.opt.number = true
+vim.opt.numberwidth = 1
 vim.opt.clipboard = "unnamedplus"
 
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    vim.cmd("hi LineNr guifg=#f7768e")
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "javascript", "typescript", "typescriptreact", "html", "css", "json" },
+  callback = function()
+    vim.bo.tabstop = 2
+    vim.bo.shiftwidth = 2
+    vim.bo.softtabstop = 2
+    vim.bo.expandtab = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "python", "lua" },
+  callback = function()
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+    vim.bo.softtabstop = 4
+    vim.bo.expandtab = true
+  end,
+})

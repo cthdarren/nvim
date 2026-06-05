@@ -12,3 +12,4 @@ vim.cmd("highlight NormalNC ctermbg=black guibg=black")
 vim.cmd("highlight Normal ctermbg=black guibg=black")
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
+
